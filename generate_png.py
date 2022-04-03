@@ -1,33 +1,10 @@
-from PIL import Image
-from pathlib import Path
 import os
 import random
-import glob
 
-# Number for PNG file generation
-number_of_png = 100
-
-# PNG pixel size
-width = 1000
-height = 1000
-
-# RGB
-r = 0
-g = 0
-b = 0
-
-# layers -> nft generation
-weights = 0
-
-# current and output folder
-current_dir = Path('.').resolve()
-out_dir = current_dir / "trait-layers/backgrounds"
-
-# json string
-layers_values = '"values" : ['
-layers_filename = '"filename" : ['
-layers_weight = '"weights": ['
-
+from PIL import Image
+from config import * # variable and path config
+from png import *
+from png import *
 
 for i in range(number_of_png):
     # generate random numbers
@@ -42,16 +19,7 @@ for i in range(number_of_png):
     img.save(os.path.join(out_dir, 'background_' + str(i) + '.png'))
 
     # TODO: comparison not working
-    for img in glob.glob(str(current_dir / "*.png")):
-        filename = Image.open(img)
-        colors = filename.getpixel((1, 1))
-
-        # TODO: comparison not working
-        if r == colors[0] and g == colors[1] and b == colors[2]:
-            print("same img - delete it")
-            os.remove(filename)
-        else:
-            print("no image file duplication")
+    duplication_check()
 
     if i == number_of_png-1:
         layers_values += '"Background_' + str(i) + '" '
