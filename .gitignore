@@ -8,7 +8,6 @@ images/*.png
 
 # custom
 collection/
-.DS_Store
 __pycache__
 
 

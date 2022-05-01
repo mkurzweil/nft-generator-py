@@ -3,6 +3,9 @@ from pathlib import Path
 # Number for PNG file generation
 number_of_png = 10
 
+# collection name
+col_name = "montain#"
+
 # PNG pixel size
 width = 1000
 height = 1000
